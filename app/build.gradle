@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.weinxin"
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    signingConfigs {
+        myConfig {
+            storeFile file("jks/xiaomo.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.myConfig
+            minifyEnabled false
+           // proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation files('libs/MobCommons-2017.1024.1907.jar')
+    implementation files('libs/MobTools-2017.1024.1907.jar')
+    implementation files('libs/ShareSDK-Alipay-3.1.1.jar')
+    implementation files('libs/ShareSDK-Alipay-Core-3.1.1.jar')
+    implementation files('libs/ShareSDK-Alipay-Moments-3.1.1.jar')
+    implementation files('libs/ShareSDK-Core-3.1.1.jar')
+    implementation files('libs/ShareSDK-Dingding-3.1.1.jar')
+    implementation files('libs/ShareSDK-QQ-3.1.1.jar')
+    implementation files('libs/ShareSDK-QZone-3.1.1.jar')
+    implementation files('libs/ShareSDK-SinaWeibo-3.1.1.jar')
+    implementation files('libs/ShareSDK-TencentWeibo-3.1.1.jar')
+    implementation files('libs/ShareSDK-Wechat-3.1.1.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-3.1.1.jar')
+    implementation files('libs/ShareSDK-Wechat-Favorite-3.1.1.jar')
+    implementation files('libs/ShareSDK-Wechat-Moments-3.1.1.jar')
+}
